@@ -1,0 +1,437 @@
+#downloading twitter data
+library(RColorBrewer)
+library(tm)
+library(SnowballC)
+library(wordcloud)
+library(httpuv)
+library(httr)
+library(rjson)
+library(RCurl)
+library(Rfacebook)
+library(RWeka)
+library(slam)
+library(twitteR)
+library(stringi)
+library(DBI)
+
+consumer_key <- 'your key here'
+consumer_secret <- 'yours'
+access_token <- 'yours'
+access_secret <- 'yours'
+setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
+
+
+
+# download data 
+#2016-08-08 for missing org's data
+data <- searchTwitter('shrinershosp', n=6000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160808shriners.csv", row.names=F)
+
+#2016-05-13
+data <- searchTwitter('aclu', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513aclu.csv", row.names=F)
+
+data <- searchTwitter('acumen', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513acumen.csv", row.names=F)
+
+data <- searchTwitter('alexslemonade', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513 alexslemonade.csv", row.names=F)
+
+data <- searchTwitter('alleycatallies', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513alleycat.csv", row.names=F)
+
+data <- searchTwitter('alzassociation', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513alz.csv", row.names=F)
+
+data <- searchTwitter('americancancer', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513acancer.csv", row.names=F)
+
+data <- searchTwitter('american heart', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513heart.csv", row.names=F)
+
+data <- searchTwitter('amnh', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513amnh.csv", row.names=F)
+
+data <- searchTwitter('redcross', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513red.csv", row.names=F)
+
+data <- searchTwitter('amnesty', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513amnesty.csv", row.names=F)
+
+data <- searchTwitter('artinstitutechi', n=6000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160805artchicago.csv", row.names=F)
+
+
+data <- searchTwitter('ashoka', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513ashoka.csv", row.names=F)
+
+data <- searchTwitter('asiasociety', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513asociety.csv", row.names=F)
+
+data <- searchTwitter('aspca', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513aspca.csv", row.names=F)
+
+data <- searchTwitter('bestfriends', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513bf.csv", row.names=F)
+
+data <- searchTwitter('bigcatrescue', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513bigcat.csv", row.names=F)
+
+data <- searchTwitter('bgea', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513bgea.csv", row.names=F)
+
+data <- searchTwitter('boyscouts', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513boy.csv", row.names=F)
+
+data <- searchTwitter('bgca club', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513bgcaclub.csv", row.names=F)
+
+data <- searchTwitter('care', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513care.csv", row.names=F)
+
+data <- searchTwitter('charitywater', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513cwater.csv", row.names=F)
+
+data <- searchTwitter('cincinnatizoo', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513czoo.csv", row.names=F)
+
+data <- searchTwitter('winterdolphin', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513dolphin.csv", row.names=F)
+
+data <- searchTwitter('compassion', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513compassion.csv", row.names=F)
+
+data <- searchTwitter('cfr', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513cfr.csv", row.names=F)
+
+data <- searchTwitter('creativecommons', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513ccom.csv", row.names=F)
+
+data <- searchTwitter('cf foundation', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513cffoundation.csv", row.names=F)
+
+data <- searchTwitter('danafarber', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513dana.csv", row.names=F)
+
+data <- searchTwitter('davhq', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513davhq.csv", row.names=F)
+
+data <- searchTwitter('dosomething', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513dothing.csv", row.names=F)
+
+data <- searchTwitter('msf usa', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513msf.csv", row.names=F)
+
+data <- searchTwitter('envdefensefund', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513env.csv", row.names=F)
+
+data <- searchTwitter('farmsanctuary', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513farm.csv", row.names=F)
+
+data <- searchTwitter('feedingamerica', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513feeding.csv", row.names=F)
+
+data <- searchTwitter('focusfamily', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513ff.csv", row.names=F)
+
+data <- searchTwitter('foodandwater', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513foodandwater.csv", row.names=F)
+
+data <- searchTwitter('nationalzoo', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513nzoo.csv", row.names=F)
+
+data <- searchTwitter('globalgiving', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513ggiving.csv", row.names=F)
+
+data <- searchTwitter('goodwill', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513goodwill.csv", row.names=F)
+
+data <- searchTwitter('greenpeace', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513green.csv", row.names=F)
+
+data <- searchTwitter('habitat org', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513habitat.csv", row.names=F)
+
+data <- searchTwitter('hrc', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513hrc.csv", row.names=F)
+
+data <- searchTwitter('hrw', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513hrw.csv", row.names=F)
+
+data <- searchTwitter('iieglobal', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513iie.csv", row.names=F)
+
+data <- searchTwitter('icrc', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513icrc.csv", row.names=F)
+
+data <- searchTwitter('ijm', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513ijm.csv", row.names=F)
+
+data <- searchTwitter('theirc', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513theirc.csv", row.names=F)
+
+data <- searchTwitter('kencen', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513kencen.csv", row.names=F)
+
+data <- searchTwitter('kiva', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513kiva.csv", row.names=F)
+
+data <- searchTwitter('lions clubs', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513lion.csv", row.names=F)
+
+data <- searchTwitter('livestrong', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513live.csv", row.names=F)
+
+data <- searchTwitter('laphil', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513laphil.csv", row.names=F)
+
+data <- searchTwitter('make a wish', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513wish.csv", row.names=F)
+
+data <- searchTwitter('mercycorp', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513mercy.csv", row.names=F)
+
+data <- searchTwitter('met museum', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513met.csv", row.names=F)
+
+data <- searchTwitter('montereyaq', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513montere.csv", row.names=F)
+
+data <- searchTwitter('museum modern art', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513moma.csv", row.names=F)
+
+data <- searchTwitter('4h', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/201605134h.csv", row.names=F)
+
+data <- searchTwitter('natlaquarium', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513natla.csv", row.names=F)
+
+data <- searchTwitter('audubonsociety', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513audubon.csv", row.names=F)
+
+data <- searchTwitter('amber alert', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513amber.csv", row.names=F)
+
+data <- searchTwitter('ymca', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513ymca.csv", row.names=F)
+
+data <- searchTwitter('nationalffa', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513ffa.csv", row.names=F)
+
+data <- searchTwitter('npr', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513npr.csv", row.names=F)
+
+data <- searchTwitter('nrdc', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513nrdc.csv", row.names=F)
+
+data <- searchTwitter('nature org', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513nature.csv", row.names=F)
+
+data <- searchTwitter('nypl', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513nypl.csv", row.names=F)
+
+data <- searchTwitter('operationbless', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513operation.csv", row.names=F)
+
+data <- searchTwitter('op homefront', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513homefront.csv", row.names=F)
+
+data <- searchTwitter('pih', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513pih.csv", row.names=F)
+
+data <- searchTwitter('peta', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513peta.csv", row.names=F)
+
+data <- searchTwitter('petsmart', n=6000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513pet.csv", row.names=F)
+
+data <- searchTwitter('ppact', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513ppact.csv", row.names=F)
+
+data <- searchTwitter('pbs', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513pbs.csv", row.names=F)
+
+data <- searchTwitter('rmhc', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513rmhc.csv", row.names=F)
+
+data <- searchTwitter('roomtoread', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513rread.csv", row.names=F)
+
+data <- searchTwitter('rotary', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513rotary.csv", row.names=F)
+
+data <- searchTwitter('Samaritans purse', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513samaritans.csv", row.names=F)
+
+data <- searchTwitter('savethechildren', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513save.csv", row.names=F)
+
+data <- searchTwitter('shrinershop', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513shriner.csv", row.names=F)
+
+data <- searchTwitter('sierraclub', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513sierraclub.csv", row.names=F)
+
+data <- searchTwitter('smithsonian', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513smithsonian.csv", row.names=F)
+
+data <- searchTwitter('stjude', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513stjude.csv", row.names=F)
+
+data <- searchTwitter('su2c', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513su2c.csv", row.names=F)
+
+data <- searchTwitter('susangkomen', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513komen.csv", row.names=F)
+
+data <- searchTwitter('teach for america', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513teach.csv", row.names=F)
+
+data <- searchTwitter('tedtalk', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513ted.csv", row.names=F)
+
+data <- searchTwitter('trevorproject', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513trevor.csv", row.names=F)
+
+data <- searchTwitter('unicef', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513unicef.csv", row.names=F)
+
+data <- searchTwitter('usolympic', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513olympic.csv", row.names=F)
+
+data <- searchTwitter('unitedway', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513way.csv", row.names=F)
+
+data <- searchTwitter('water', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513water.csv", row.names=F)
+
+data <- searchTwitter('wikileaks', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513wikileaks.csv", row.names=F)
+
+data <- searchTwitter('worldbank', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513wb.csv", row.names=F)
+
+data <- searchTwitter('wfp', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513wfp.csv", row.names=F)
+
+data <- searchTwitter('world wildlife', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513wwf1.csv", row.names=F)
+
+data <- searchTwitter('wwf', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513wwf.csv", row.names=F)
+
+data <- searchTwitter('wwp', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513wwp.csv", row.names=F)
+
+data <- searchTwitter('sandiegozoo', n=1000, lang = 'en') 
+data <- twListToDF(data)
+write.csv(data, file="~/Dropbox/00dissertation/ttdata/20160513szoo.csv", row.names=F)
+
+
+## donation & fundraising in general communication on Twitter
+data <- searchTwitter('fundraising', n=100000, lang='en')
+fund <- twListToDF(data)
+write.csv(fund, file="~/Dropbox/00dissertation/ttdata/ttfd20160516.csv", row.names=F)
+
+data <- searchTwitter('donation', n=100000, lang='en')
+ttdn <- twListToDF(data)
+write.csv(ttdn, file="~/Dropbox/00dissertation/ttdata/ttdn20160516.csv", row.names=F)
